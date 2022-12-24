@@ -1,0 +1,14 @@
+﻿@page "{map}/{name}"
+@model TarkovStats.Pages.ViewMap
+
+<img id="target" src="@Model.ImageUrl"/>
+
+@section Scripts
+{
+	<script type="text/javascript" src="/js/panzoom.min.js">
+    	</script>
+	
+	<script type="text/javascript">
+	panzoom(document.getElementById("target"));
+	</script>
+}

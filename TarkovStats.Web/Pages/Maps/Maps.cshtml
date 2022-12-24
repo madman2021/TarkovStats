@@ -1,0 +1,26 @@
+﻿@page "/maps"
+@model TarkovStats.Pages.Maps
+
+<div class="maps-holder mt-5 mb-5">
+    @foreach (var m in Model.MapList)
+    {
+        <div class="col-lg-5 col-md-5 col-sm-5 mx-3 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    @m.Value.DisplayName
+                </div>
+                <div class="card-body">
+                    <img class="card-img" src="@m.Value.ThumbImg"></img>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var dm in m.Value.MapTypeInfos)
+                        {
+                            <li class="list-group-item">
+                                <a asp-page="/Maps/ViewMap" asp-route-map="@m.Key" asp-route-name="@dm.Key">@dm.Value.DisplayName</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>

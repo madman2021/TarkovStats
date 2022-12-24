@@ -1,0 +1,158 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a {
+    color: #0077cc;
+}
+
+.form-control:focus {
+    border-color: #0077cc;
+    box-shadow: 0 0 0 0.2rem #0077cc;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.btn-link.nav-link:focus {
+    outline: black auto 1px;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.container {
+    max-width: 960px;
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+@font-face {
+    font-family: Bender;
+    src: url("../fonts/Jovanny Lemonad - Bender.otf");
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: Bender, sans-serif;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow: scroll;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+.Factory {
+    background-image: url("../img/factory.jpg");
+}
+
+.Customs {
+    background-image: url("../img/customs.jpg");
+}
+
+.map-selector{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+.map-selector input {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}   
+
+.map-selector input:active + .map-label img input:active {
+    opacity: .9;
+}
+
+.map-selector input:checked + .map-label img {
+    filter: none
+}
+
+.map-label img {
+    height: 120px;
+}
+
+.map-label img {
+    cursor: pointer;
+    display: inline-block;
+    transition: all 100ms ease-in;
+    filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+
+.map-label img:hover {
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+.map-name {
+    background-color: #444;
+    text-align: center;
+}
+.map-number{
+    position: absolute;
+    font-size: 20px;
+    font-weight:bold;
+    z-index: 1;
+    color:white;
+    background-color: #444;
+    padding-right:5px;
+    padding-bottom: 2px;
+    border-bottom-right-radius: 10px;
+}
+
+.maps-holder {
+    display: flex;
+    flex-wrap: wrap;
+}
+.maps-holder{
+    
+}

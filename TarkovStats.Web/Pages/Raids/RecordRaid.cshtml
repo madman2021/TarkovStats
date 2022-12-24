@@ -1,0 +1,82 @@
+﻿@page
+@model TarkovStats.Pages.RecordRaid
+
+@if (Model.HasMessage)
+{
+    <div class="alert alert-primary" role="alert">
+        @Model.Message
+    </div>
+}
+<form method="post">
+    <div class="card">
+        <div id="map-header" class="card-header">
+            1) Map
+            <span id="map-info" class="map-info p-lg-3">You can press the number show on the map to select it.</span>
+        </div>
+        <div class="card-body">
+            <div id="maps">
+                @{
+                    int i = 1;
+                }
+                @foreach (var map in Model.Maps)
+                {
+                    <div class="form-check map-selector">
+                        <input id="map-@map.Map" asp-for="Input.Map" type="radio" value="@map.Map" class="form-check-input">
+                        <label class="form-check-label map-label" for="map-@map.Map">
+                            <span class="map-number">@(i++)</span>
+                            <img src="@map.ImageUrl"/>
+                            <div class="map-name">
+                                <span>@map.Display</span>
+                            </div>
+                        </label>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="card mt-2">
+        <div class="card-header" id="stat-header">
+            2) Stats
+        </div>
+        <div class="card-body">
+            <div class="row g-2">
+                <div class="form-group col-md-6">
+                    <label asp-for="Input.PmcKills"></label>
+                    <input asp-for="Input.PmcKills" class="form-control stat">
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Input.ScavKills"></label>
+                    <input asp-for="Input.ScavKills" class="form-control stat">
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="form-group col-md-6">
+                    <label class="form-label" asp-for="Input.ExpTotal">Total EXP</label>
+                    <input class="form-control stat" asp-for="Input.ExpTotal"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="form-label" asp-for="Input.MinLength"></label>
+                    <input class="form-control stat" asp-for="Input.MinLength"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-2">
+        <div class="card-header" id="result-header">
+            3) Result
+        </div>
+        <div class="card-body">
+            @foreach (var res in Model.Results)
+            {
+                <div class="form-check">
+                    <input id="res-@res" asp-for="Input.RaidResult" type="radio" value="@res" class="form-check-input result">
+                    <label class="form-check-label" for="res-@res">
+                        @res
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+    <button class="btn btn-success mt-2">Record</button>
+</form>
