@@ -21,6 +21,13 @@ public static class MapCollection
                             DisplayName = "Flat",
                             ImageUrl = "/img/maps/Customs.png"
                         }
+                    },
+                    {
+                        "3d", new MapTypeInfo()
+                        {
+                            DisplayName = "3D",
+                            ImageUrl = "/img/maps/customs-3d.jpg"
+                        }
                     }
                 }
             }
@@ -86,6 +93,13 @@ public static class MapCollection
                             DisplayName = "3D",
                             ImageUrl = "/img/maps/reserve.png"
                         }
+                    },
+                    {
+                        "Flat", new MapTypeInfo()
+                        {
+                            DisplayName = "Flat",
+                            ImageUrl = "/img/maps/new_reserve.png"
+                        }
                     }
                 }
             }
@@ -127,6 +141,24 @@ public static class MapCollection
                 Map = Map.Woods,
                 MapTypeInfos = new()
                 {
+                }
+            }
+        },
+        {
+            Map.Streets, new MapInfo()
+            {
+                DisplayName = "Streets",
+                ThumbImg = "/img/map_thumb/streets.webp",
+                Map = Map.Streets,
+                MapTypeInfos = new()
+                {
+                    {
+                        "flat", new MapTypeInfo()
+                        {
+                            DisplayName = "Flat",
+                            ImageUrl = "/img/maps/streets_flat.webp"
+                        }
+                    }
                 }
             }
         }

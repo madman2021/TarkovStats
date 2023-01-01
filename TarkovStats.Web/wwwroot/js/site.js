@@ -1,19 +1,21 @@
 ﻿$(document).ready(function () {
     $("#map-Factory").focus();
     $("#map-header").toggleClass("bg-primary", true);
-    $(".map-selector").keyup(function (key) {
+    $(".radio-by-number").keyup(function (key) {
+        var group = $(this.parentNode);
         var numberPressed = String.fromCharCode(key.keyCode);
-
         var number = parseInt(numberPressed);
 
         if (isNaN(number)) {
             return;
         }
-
-        if (number > 0 && number <= 9) {
-            var map = $("#maps").find("input")[number - 1];
-            map.checked = true;
-            $("#Input_PmcKills").focus();
+        var inputs = group.find("input");
+        if (number > 0 && number <= inputs.length) {
+            var item = inputs[number - 1];
+            item.checked = true;
+            if(group[0].id==="maps"){
+                $("#Input_ExpTotal").focus();
+            }
         }
     });
 

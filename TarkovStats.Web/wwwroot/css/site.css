@@ -99,27 +99,29 @@ body {
     background-image: url("../img/customs.jpg");
 }
 
-.map-selector{
+.map-selector {
     display: inline-flex;
     flex-wrap: wrap;
 }
+
 .map-selector input {
     opacity: 0;
     margin: 0;
     padding: 0;
     position: absolute;
-}   
+}
 
 .map-selector input:active + .map-label img input:active {
     opacity: .9;
 }
 
 .map-selector input:checked + .map-label img {
-    filter: none
+    filter: none;
+    outline: rgb(var(--bs-info-rgb)) solid 3px;
 }
 
 .map-label img {
-    height: 120px;
+    height: 148px;
 }
 
 .map-label img {
@@ -137,22 +139,102 @@ body {
     background-color: #444;
     text-align: center;
 }
-.map-number{
+
+.box-number {
+    padding-left: 2px;
     position: absolute;
     font-size: 20px;
-    font-weight:bold;
+    font-weight: bold;
     z-index: 1;
-    color:white;
+    color: white;
     background-color: #444;
-    padding-right:5px;
-    padding-bottom: 2px;
-    border-bottom-right-radius: 10px;
+    width: 18px;
+    height: 30px;
+}
+
+.map-selector input:checked + label > .box-number {
+    color: green;
 }
 
 .maps-holder {
     display: flex;
     flex-wrap: wrap;
 }
-.maps-holder{
-    
+
+.maps-holder {
+
+}
+
+.raid-res input {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+.raid-res {
+    margin-right: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.res-text {
+    font-size: 30px;
+    padding: 5px 5px 5px 20px;
+}
+
+.res-KilledInAction {
+    color: black;
+    background-color: red;
+}
+
+.res-Survived {
+    color: white;
+    background-color: green;
+}
+
+.res-MissingInAction {
+    color: black;
+    background-color: orange;
+}
+
+.res-RunThrough {
+    color: white;
+    background-color: black;
+}
+
+.raid-res-holder {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.raid-res input:checked + label > .box-number {
+
+    color: green;
+}
+.raid-res input:checked + label{
+    outline: rgb(var(--bs-info-rgb)) solid 3px;
+}
+
+.res-icon {
+    position: relative;
+    top: 6px;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.res-Survived .res-icon{
+    background-image: url("../img/icons/survive.png");
+}
+.res-KilledInAction .res-icon{
+    background-image: url("../img/icons/killed_in_action.png");
+}
+.res-MissingInAction .res-icon{
+    background-image: url("../img/icons/missing_in_action.png");
+}
+.res-RunThrough .res-icon{
+    background-image: url("../img/icons/run-through.png");
 }

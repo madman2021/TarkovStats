@@ -8,10 +8,11 @@
         <tr>
             <th>ID</th>
             <th>Recorded</th>
-            <th>Map</th>
+            <th>Map</th>http://forum.escapefromtarkov.com/
             <th>PMC Kills</th>
             <th>Scav Kills</th>
             <th>EXP</th>
+            <th>Result</th>
             <th></th>
         </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td>@raid.PmcKills</td>
                 <td>@raid.ScavKills</td>
                 <td>@raid.TotalEXP</td>
+                <td>@raid.RaidResult</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Sorry Next Update!">Edit</button>
                     <button class="btn btn-danger" asp-page-handler="Delete" asp-route-id="@raid.Id" onclick="confirmDelete(event)">Delete</button>

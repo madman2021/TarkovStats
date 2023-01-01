@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TarkovStats.Middleware;
@@ -11,6 +12,11 @@ builder.Configuration.AddEnvironmentVariables();
 var connectionString = builder.Configuration.GetConnectionString("TarkovStatsContextConnection") ??
                        throw new InvalidOperationException(
                            "Connection string 'TarkovStatsContextConnection' not found.");
+if (!string.IsNullOrWhiteSpace(builder.Configuration["key_store"]))
+{
+    builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(builder.Configuration["key_store"]));
+}
+
 builder.Services.AddDbContext<TarkovStatsContext>(options => options.UseSqlite(connectionString));
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<TarkovStatsContext>();
@@ -18,8 +24,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddScoped<UserInfoHolder>();
 builder.Services.AddScoped<UserInfo>(s => s.GetRequiredService<UserInfoHolder>().UserInfo);
 builder.Services.AddScoped<IRaidService, RaidService>();
-    builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-    builder.Services.AddAuthorization(options =>
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services.AddAuthorization(options =>
 {
     options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 });

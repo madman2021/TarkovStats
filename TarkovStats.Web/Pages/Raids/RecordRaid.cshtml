@@ -1,12 +1,7 @@
 ﻿@page
 @model TarkovStats.Pages.RecordRaid
 
-@if (Model.HasMessage)
-{
-    <div class="alert alert-primary" role="alert">
-        @Model.Message
-    </div>
-}
+
 <form method="post">
     <div class="card">
         <div id="map-header" class="card-header">
@@ -20,10 +15,10 @@
                 }
                 @foreach (var map in Model.Maps)
                 {
-                    <div class="form-check map-selector">
-                        <input id="map-@map.Map" asp-for="Input.Map" type="radio" value="@map.Map" class="form-check-input">
+                    <div class="map-selector radio-by-number">
+                        <input id="map-@map.Map" asp-for="Input.Map" type="radio" value="@map.Map">
                         <label class="form-check-label map-label" for="map-@map.Map">
-                            <span class="map-number">@(i++)</span>
+                            <span class="box-number">@(i++)</span>
                             <img src="@map.ImageUrl"/>
                             <div class="map-name">
                                 <span>@map.Display</span>
@@ -41,23 +36,21 @@
         </div>
         <div class="card-body">
             <div class="row g-2">
-                <div class="form-group col-md-6">
-                    <label asp-for="Input.PmcKills"></label>
-                    <input asp-for="Input.PmcKills" class="form-control stat">
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="Input.ScavKills"></label>
-                    <input asp-for="Input.ScavKills" class="form-control stat">
-                </div>
-            </div>
-            <div class="row g-2">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                     <label class="form-label" asp-for="Input.ExpTotal">Total EXP</label>
                     <input class="form-control stat" asp-for="Input.ExpTotal"/>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                     <label class="form-label" asp-for="Input.MinLength"></label>
                     <input class="form-control stat" asp-for="Input.MinLength"/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Input.PmcKills" class="form-label"></label>
+                    <input asp-for="Input.PmcKills" class="form-control stat">
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Input.ScavKills" class="form-label"></label>
+                    <input asp-for="Input.ScavKills" class="form-control stat">
                 </div>
             </div>
         </div>
@@ -67,16 +60,52 @@
             3) Result
         </div>
         <div class="card-body">
-            @foreach (var res in Model.Results)
-            {
-                <div class="form-check">
-                    <input id="res-@res" asp-for="Input.RaidResult" type="radio" value="@res" class="form-check-input result">
-                    <label class="form-check-label" for="res-@res">
-                        @res
-                    </label>
-                </div>
-            }
+            <div class="raid-res-holder">
+                @{
+                    i = 1;
+                }
+                @foreach (var res in Model.Results)
+                {
+                    <div class="raid-res res-@res radio-by-number">
+                        <input id="res-@res" asp-for="Input.RaidResult" type="radio" value="@res" class="result"/>
+                        <label class="form-check-label" for="res-@res">
+                            <div class="box-number">@(i++)</div>
+                            <div class="res-text">
+                                <span class="res-icon"></span>
+                                @res
+                            </div>
+                        </label>
+                    </div>
+                }
+            </div>
         </div>
     </div>
     <button class="btn btn-success mt-2">Record</button>
 </form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+   
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }});
+</script>
+
+    @if (Model.HasMessage)
+    {
+        <script type="text/javascript">
+        Toast.fire({
+          icon: '@(Model.MessageError ? "error" : "success")',
+          title: '@Model.Message'
+        })
+        </script>
+    }
+}

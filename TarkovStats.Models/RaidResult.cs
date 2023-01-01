@@ -2,5 +2,5 @@
 
 public enum RaidResult
 {
-    Survived,KilledInAction,MissingInAction
+    Survived,KilledInAction,MissingInAction,RunThrough
 }

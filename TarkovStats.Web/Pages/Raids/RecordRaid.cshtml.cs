@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using TarkovStats.Models;
 using TarkovStats.Services;
@@ -45,6 +46,8 @@ public class RecordRaid : PageModel
     [TempData(Key = "IndexMessage")] public string Message { get; set; }
     public bool HasMessage => !String.IsNullOrWhiteSpace(Message);
 
+    [TempData(Key = "ErrorHolder")]
+    public bool MessageError { get; set; }
     public async Task<IActionResult> OnPostAsync()
     {
         var raid = new Raid()
